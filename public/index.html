@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- </br>    
+    </br>    
+    </br>     -->
+    <div style="position: relative;">
+        <ul class="tools" style="position:absolute; top:20px; z-index:1">
+            <li class="tool-btn">
+                <input id="pencil_btn" type="radio" name="toolbar" onchange="handleChange(this);" value="1">
+                <label for="pencil_btn">
+                    <i class="fas fa-pencil-alt"></i>
+                </label>
+            </li>
+            <li class="tool-btn">
+                <input id="paint_btn" type="radio" name="toolbar" onchange="handleChange(this);" value="2">
+                <label for="paint_btn">
+                    <i class="fa fa-fw fa-paint-brush"></i>
+                </label>
+            </li>
+            <div class="paint">
+                <label for="color-input" id="color-label" class="hide" style="background-color: black"></label>
+                <input type="checkbox" id="color-input"></input>
+    
+                <div id="color-picker" class="hide">
+                    <canvas id="color-block" height="150" width="150"></canvas>
+                    <canvas id="color-strip" height="150" width="30"></canvas>
+                </div>
+            </div>
+            <li class="tool-btn">
+                <input id="erase_btn" type="radio" name="toolbar" onchange="handleChange(this);" value="3">
+                <label for="erase_btn">
+                    <i class="fa fa-fw fa-eraser"></i>
+                </label>
+            </li>
+            <li class="tool-btn">
+                <input id="clear_btn" type="radio" name="toolbar" onchange="handleChange(this);" value="4">
+                <label for="clear_btn">
+                    <i class="fas fa-trash"></i>
+                </label>
+            </li>
+            <li class="tool-btn">
+                <input id="size_btn" type="radio" name="toolbar" onchange="handleChange(this);" value="5">
+                <label for="size_btn">
+                    <i class="fas fa-search-plus"></i>
+                </label>
+            </li>
+
+            <div id="slider" class="slidecontainer">
+                <input type="range" min="1" max="50" value="5" class="hide slider" id="myRange">
+            </div>
+            <li class="tool-btn">
+                <input id="download_btn" type="radio" name="toolbar" onchange="handleChange(this);" value="6">
+                <label for="download_btn">
+                    <i class="fas fa-download"></i>
+                </label>
+            </li>
+            <li class="tool-btn">
+                <input id="undo_btn" type="radio" name="toolbar" onclick="handleChange(this);" value="7">
+                <label for="undo_btn">
+                    <i class="fas fa-undo"></i>
+                </label>
+            </li>
+            <li class="tool-btn">
+                <input id="redo_btn" type="radio" name="toolbar" onclick="handleChange(this);" value="8">
+                <label for="redo_btn">
+                    <i class="fas fa-redo"></i>
+                </label>
+            </li>
+            <!-- <li class="tool-btn">
+                <label>Image File:</label><br/>
+                <input id="upload_btn" type="file" name="toolbar" id="imageLoader" onchange="handleChange(this);" value="7">
+                <label for="upload_btn">
+                    <i class="fas fa-upload"></i>
+                </label>
+            </li> -->
+        </ul>
+    
+        <canvas style="position:absolute; z-index:0;border: 1px solid black; " id="canvas" width="1200" height="600"></canvas>
+    </div>
+    <script src="https://cdn.socket.io/4.2.0/socket.io.min.js" integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj" crossorigin="anonymous"></script>
+    <script>
+        let socket = io.connect("http://localhost:5000/");
+    </script>
+    <script src='main.js'></script>
+</body>
+
+</html>
